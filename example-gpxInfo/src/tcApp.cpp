@@ -79,8 +79,8 @@ void tcApp::drawWaypoints() {
         fill();
         drawCircle(px.x, px.y, 4);
 
-        // Name + elevation, so it's clear each point carries an altitude too.
-        string label = wp.name + " (" + to_string((int)wp.ele) + " m)";
+        // Name + elevation, so it's clear each point carries an elevation too.
+        string label = wp.name + " (elev. " + to_string((int)wp.ele) + " m)";
         drawBitmapString(label, px.x + 8, px.y + 4);
     }
 }
