@@ -2,7 +2,7 @@
   "description": "Geographic primitives (LatLon, distance/bearing) + geo-format I/O (GPX). Foundation for tcxOpenStreetMap and other geo addons.",
   "author": "tettou771",
   "license": "MIT",
-  "category": "utils",
+  "category": "utilities",
   "platforms": ["macos", "windows", "linux"],
   "keywords": [
     "geo",
