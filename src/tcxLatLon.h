@@ -20,7 +20,7 @@
 #include <algorithm>
 #include <cmath>
 
-namespace tcx {
+namespace tcx::geo {
 
 // WGS84 degrees. lat in [-90, 90] (+north), lon in [-180, 180] (+east).
 struct LatLon {
@@ -60,4 +60,20 @@ inline double bearing(LatLon a, LatLon b) {
     return br;
 }
 
-} // namespace tcx
+} // namespace tcx::geo
+
+// -----------------------------------------------------------------------------
+// Backward compatibility. The canonical namespace is now `tcx::geo`. These
+// silent aliases keep older code compiling: flat `tcx::LatLon` and legacy
+// `trussc::LatLon`. DEPRECATED — removed in v1.0.0.
+// (No [[deprecated]] attribute: under the usual `using namespace tc;` it would
+//  warn on idiomatic unqualified use too. See tcxGeo README for migration.)
+// -----------------------------------------------------------------------------
+namespace tcx    { using geo::LatLon; }          // deprecated: remove at v1.0.0
+namespace tcx    { using geo::EARTH_RADIUS_M; }  // deprecated: remove at v1.0.0
+namespace tcx    { using geo::distance; }         // deprecated: remove at v1.0.0
+namespace tcx    { using geo::bearing; }          // deprecated: remove at v1.0.0
+namespace trussc { using tcx::geo::LatLon; }         // deprecated: remove at v1.0.0
+namespace trussc { using tcx::geo::EARTH_RADIUS_M; } // deprecated: remove at v1.0.0
+namespace trussc { using tcx::geo::distance; }       // deprecated: remove at v1.0.0
+namespace trussc { using tcx::geo::bearing; }        // deprecated: remove at v1.0.0

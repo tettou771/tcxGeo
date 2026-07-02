@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <cstdio>
 
-namespace tcx {
+namespace tcx::geo {
 
 // ---------------------------------------------------------------- time
 
@@ -154,4 +154,4 @@ double GpxTrack::duration() const {
     return (first == 0) ? 0.0 : (double)(last - first);
 }
 
-} // namespace tcx
+} // namespace tcx::geo

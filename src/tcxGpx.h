@@ -22,7 +22,7 @@
 #include <string>
 #include <vector>
 
-namespace tcx {
+namespace tcx::geo {
 
 struct GpxPoint {
     LatLon      pos{};
@@ -72,4 +72,24 @@ struct GpxFile {
 GpxFile loadGpx (const std::string& path);
 GpxFile parseGpx(const std::string& xml);
 
-} // namespace tcx
+} // namespace tcx::geo
+
+// -----------------------------------------------------------------------------
+// Backward compatibility. The canonical namespace is now `tcx::geo`. These
+// silent aliases keep older code compiling: flat `tcx::GpxFile` and legacy
+// `trussc::GpxFile`. DEPRECATED — removed in v1.0.0.
+// (No [[deprecated]] attribute: under the usual `using namespace tc;` it would
+//  warn on idiomatic unqualified use too. See tcxGeo README for migration.)
+// -----------------------------------------------------------------------------
+namespace tcx    { using geo::GpxPoint; }    // deprecated: remove at v1.0.0
+namespace tcx    { using geo::GpxWaypoint; } // deprecated: remove at v1.0.0
+namespace tcx    { using geo::GpxTrack; }    // deprecated: remove at v1.0.0
+namespace tcx    { using geo::GpxFile; }     // deprecated: remove at v1.0.0
+namespace tcx    { using geo::loadGpx; }     // deprecated: remove at v1.0.0
+namespace tcx    { using geo::parseGpx; }    // deprecated: remove at v1.0.0
+namespace trussc { using tcx::geo::GpxPoint; }    // deprecated: remove at v1.0.0
+namespace trussc { using tcx::geo::GpxWaypoint; } // deprecated: remove at v1.0.0
+namespace trussc { using tcx::geo::GpxTrack; }    // deprecated: remove at v1.0.0
+namespace trussc { using tcx::geo::GpxFile; }     // deprecated: remove at v1.0.0
+namespace trussc { using tcx::geo::loadGpx; }     // deprecated: remove at v1.0.0
+namespace trussc { using tcx::geo::parseGpx; }    // deprecated: remove at v1.0.0
